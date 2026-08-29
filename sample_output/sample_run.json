@@ -1,0 +1,309 @@
+{
+  "rfp_run_id": "665d0cd8-2ffc-4028-be6f-98dbd38477ee",
+  "suppliers": [
+    {
+      "supplier_name": "Orbit Digital",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Technical Capability.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 7.0,
+          "gap": -3.0,
+          "relative_pct": 57.14
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 10.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Implementation Plan.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Commercial Value.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Security & Compliance.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 6.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Support & Experience.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -4.0,
+          "relative_pct": 60.0
+        }
+      ],
+      "risks": [
+        "[MOCK] No live LLM configured; risks not analyzed."
+      ],
+      "overall_summary": "[MOCK] Deterministic placeholder evaluation for Orbit Digital.",
+      "warnings": [],
+      "submission_date": "2026-06-07",
+      "experience_rating": 9.0,
+      "absolute_score": 70.0,
+      "ppi": 78.7,
+      "final_rank": 1,
+      "tie_break_reason": "Highest PPI."
+    },
+    {
+      "supplier_name": "Apex Systems",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Technical Capability.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 7.0,
+          "gap": -3.0,
+          "relative_pct": 57.14
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 6.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Implementation Plan.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -4.0,
+          "relative_pct": 60.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Commercial Value.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Security & Compliance.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 10.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Support & Experience.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        }
+      ],
+      "risks": [
+        "[MOCK] No live LLM configured; risks not analyzed."
+      ],
+      "overall_summary": "[MOCK] Deterministic placeholder evaluation for Apex Systems.",
+      "warnings": [],
+      "submission_date": "2026-06-10",
+      "experience_rating": 8.0,
+      "absolute_score": 66.0,
+      "ppi": 74.7,
+      "final_rank": 2,
+      "tie_break_reason": "Ranked by PPI."
+    },
+    {
+      "supplier_name": "BrightPath Tech",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Technical Capability.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 7.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 6.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Implementation Plan.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -4.0,
+          "relative_pct": 60.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Commercial Value.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": -5.0,
+          "relative_pct": 44.44
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Security & Compliance.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Support & Experience.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -6.0,
+          "relative_pct": 40.0
+        }
+      ],
+      "risks": [
+        "[MOCK] No live LLM configured; risks not analyzed."
+      ],
+      "overall_summary": "[MOCK] Deterministic placeholder evaluation for BrightPath Tech.",
+      "warnings": [],
+      "submission_date": "2026-06-08",
+      "experience_rating": 4.0,
+      "absolute_score": 59.0,
+      "ppi": 70.44,
+      "final_rank": 3,
+      "tie_break_reason": "Ranked by PPI."
+    },
+    {
+      "supplier_name": "NexaWorks",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Technical Capability.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 7.0,
+          "gap": -3.0,
+          "relative_pct": 57.14
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 4.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Implementation Plan.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -6.0,
+          "relative_pct": 40.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Commercial Value.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "[MOCK] Proposal shows strong alignment on Security & Compliance.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.89
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 5.0,
+          "justification": "[MOCK] Proposal shows moderate alignment on Support & Experience.",
+          "evidence": "[MOCK] Derived from supplier document text (no live LLM call; set ANTHROPIC_API_KEY to enable real scoring).",
+          "benchmark": 10.0,
+          "gap": -5.0,
+          "relative_pct": 50.0
+        }
+      ],
+      "risks": [
+        "[MOCK] No live LLM configured; risks not analyzed."
+      ],
+      "overall_summary": "[MOCK] Deterministic placeholder evaluation for NexaWorks.",
+      "warnings": [],
+      "submission_date": "2026-06-09",
+      "experience_rating": 7.0,
+      "absolute_score": 59.0,
+      "ppi": 67.92,
+      "final_rank": 4,
+      "tie_break_reason": "Ranked by PPI."
+    }
+  ]
+}
