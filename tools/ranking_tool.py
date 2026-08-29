@@ -51,8 +51,9 @@ def compute_benchmarks_and_ppi(validated_suppliers: list[dict]) -> None:
             c["gap"] = round(c["score"] - benchmark, 2)
 
             if benchmark == 0:
-                # Safe handling: no one scored above zero on this criterion.
-                relative_pct = 100.0 if c["score"] == 0 else 100.0
+                # Safe handling: no supplier scored above zero on this criterion;
+                # treat all as equal rather than dividing by zero.
+                relative_pct = 100.0
             else:
                 relative_pct = (c["score"] / benchmark) * 100.0
             c["relative_pct"] = round(relative_pct, 2)

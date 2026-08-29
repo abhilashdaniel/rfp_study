@@ -23,26 +23,51 @@ st.set_page_config(page_title="Agentic RFP Evaluation", layout="wide")
 # ---------------------------------------------------------------------------
 # Sidebar: LLM configuration
 # ---------------------------------------------------------------------------
+_ANTHROPIC_MODELS = [
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-haiku-20241022",
+    "claude-3-opus-20240229",
+]
+_COHERE_MODELS = [
+    "command-r7b-12-2024",
+    "command-r-plus-08-2024",
+    "command-r-08-2024",
+]
+
 with st.sidebar:
     st.header("⚙️ Configuration")
-    api_key_input = st.text_input(
-        "Anthropic API key",
-        type="password",
-        help="Leave blank to run in offline MOCK mode (deterministic placeholder scores, no API calls).",
-    )
-    if api_key_input:
-        os.environ["ANTHROPIC_API_KEY"] = api_key_input
 
-    model_choice = st.selectbox(
-        "Model",
-        ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5-20251001"],
-        index=0,
+    provider = st.radio(
+        "LLM Provider",
+        ["Anthropic", "Cohere"],
+        horizontal=True,
+        help="Select which LLM provider to use for scoring.",
     )
+    os.environ["RFP_LLM_PROVIDER"] = provider.lower()
+
+    if provider == "Anthropic":
+        api_key_input = st.text_input(
+            "Anthropic API key",
+            type="password",
+            help="Leave blank to run in offline MOCK mode.",
+        )
+        if api_key_input:
+            os.environ["ANTHROPIC_API_KEY"] = api_key_input
+        model_choice = st.selectbox("Model", _ANTHROPIC_MODELS, index=0)
+    else:
+        api_key_input = st.text_input(
+            "Cohere API key",
+            type="password",
+            help="Leave blank to run in offline MOCK mode.",
+        )
+        if api_key_input:
+            os.environ["COHERE_API_KEY"] = api_key_input
+        model_choice = st.selectbox("Model", _COHERE_MODELS, index=0)
 
     if is_mock_mode():
         st.warning("Running in MOCK mode — no API key detected. Scores are deterministic placeholders.")
     else:
-        st.success("Live LLM scoring enabled.")
+        st.success(f"Live LLM scoring enabled ({provider}).")
 
     st.divider()
     st.caption("Agentic RFP Evaluation & Supplier Ranking — classroom mini project")
