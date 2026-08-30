@@ -52,8 +52,11 @@ with st.sidebar:
             type="password",
             help="Get a free key at openrouter.ai. Leave blank for MOCK mode.",
         )
+        st.caption("🔒 Key held in memory only — not saved to disk or logged.")
         if api_key_input:
             os.environ["OPENROUTER_API_KEY"] = api_key_input
+        else:
+            os.environ.pop("OPENROUTER_API_KEY", None)
         model_choice = st.selectbox("Model", _OPENROUTER_MODELS, index=0)
     else:
         api_key_input = st.text_input(
@@ -61,8 +64,11 @@ with st.sidebar:
             type="password",
             help="Leave blank to run in offline MOCK mode.",
         )
+        st.caption("🔒 Key held in memory only — not saved to disk or logged.")
         if api_key_input:
             os.environ["COHERE_API_KEY"] = api_key_input
+        else:
+            os.environ.pop("COHERE_API_KEY", None)
         model_choice = st.selectbox("Model", _COHERE_MODELS, index=0)
 
     if is_mock_mode():
