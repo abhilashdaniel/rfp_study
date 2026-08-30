@@ -93,7 +93,7 @@ with tab_criteria:
 
         st.dataframe(
             df[["criterion_id", "name", "description", "weight", "max_score", "is_active"]],
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -214,7 +214,7 @@ with tab_leaderboard:
                     for r in results
                 ]
             ).sort_values("Rank")
-            st.dataframe(board, use_container_width=True, hide_index=True)
+            st.dataframe(board, width="stretch", hide_index=True)
         else:
             st.info("This run has no results yet.")
 
@@ -256,7 +256,7 @@ with tab_scorecards:
                     for c in supplier["criteria"]
                 ]
             )
-            st.dataframe(crit_df, use_container_width=True, hide_index=True)
+            st.dataframe(crit_df, width="stretch", hide_index=True)
 
             with st.expander("Evidence & justification per criterion"):
                 for c in supplier["criteria"]:
