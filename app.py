@@ -1,5 +1,5 @@
 """
-Agentic RFP Evaluation and Supplier Ranking - Streamlit UI
+AbhilashDaniel | Agentic RFP Evaluation and Supplier Ranking - Streamlit UI
 
 Screens:
   - Criteria            : active criteria, weights, max score
@@ -71,9 +71,9 @@ with st.sidebar:
         st.success(f"Live LLM scoring enabled ({provider}).")
 
     st.divider()
-    st.caption("Agentic RFP Evaluation & Supplier Ranking — classroom mini project")
+    st.caption("AbhilashDaniel (J for Jenius🧠) | Agentic RFP Evaluation & Supplier Ranking — Mini Project")
 
-st.title("📋 Agentic RFP Evaluation & Supplier Ranking")
+st.title("📋 AbhilashDaniel | Agentic RFP Evaluation & Supplier Ranking")
 
 tab_criteria, tab_input, tab_leaderboard, tab_scorecards, tab_run = st.tabs(
     ["Criteria", "Supplier Input & Evaluate", "Leaderboard", "Detailed Scorecards", "Run Details"]
