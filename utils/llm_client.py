@@ -1,10 +1,16 @@
 """
 Thin wrapper around the LLM API so the rest of the app never has to think
-about SDK details. Supports two providers, selected via the RFP_LLM_PROVIDER
-environment variable (default: "anthropic"):
+about SDK details. Supports two active providers, selected via the RFP_LLM_PROVIDER
+environment variable (default: "cohere"):
 
-    RFP_LLM_PROVIDER=anthropic   – uses Anthropic Claude (ANTHROPIC_API_KEY)
-    RFP_LLM_PROVIDER=cohere      – uses Cohere Command (COHERE_API_KEY)
+    RFP_LLM_PROVIDER=cohere       – uses Cohere Command       (COHERE_API_KEY)
+    RFP_LLM_PROVIDER=openrouter   – uses OpenRouter (any model via OpenAI-compat API)
+                                    (OPENROUTER_API_KEY)
+
+DEPRECATED:
+    RFP_LLM_PROVIDER=anthropic    – Anthropic backend is deprecated. It still works
+                                    but emits a DeprecationWarning. Use openrouter
+                                    with a Claude model ID instead.
 
 Also provides a deterministic MOCK mode (no API key required) so the full
 pipeline can be demoed / graded offline.
@@ -15,7 +21,7 @@ import re
 import hashlib
 
 MOCK_MODE_ENV = "RFP_MOCK_LLM"
-PROVIDER_ENV = "RFP_LLM_PROVIDER"   # "anthropic" | "cohere"
+PROVIDER_ENV = "RFP_LLM_PROVIDER"   # "cohere" | "openrouter" | "anthropic" (deprecated)
 
 
 # ---------------------------------------------------------------------------
@@ -23,15 +29,20 @@ PROVIDER_ENV = "RFP_LLM_PROVIDER"   # "anthropic" | "cohere"
 # ---------------------------------------------------------------------------
 
 def get_provider() -> str:
-    """Returns the active provider name, lower-cased. Defaults to 'anthropic'."""
-    return os.environ.get(PROVIDER_ENV, "anthropic").lower()
+    """Returns the active provider name, lower-cased. Defaults to 'cohere'."""
+    return os.environ.get(PROVIDER_ENV, "cohere").lower()
 
 
 def _get_api_key() -> str | None:
     """Returns the API key for the active provider, or None if not set."""
-    if get_provider() == "cohere":
+    provider = get_provider()
+    if provider == "cohere":
         return os.environ.get("COHERE_API_KEY")
-    return os.environ.get("ANTHROPIC_API_KEY")
+    if provider == "openrouter":
+        return os.environ.get("OPENROUTER_API_KEY")
+    if provider == "anthropic":
+        return os.environ.get("ANTHROPIC_API_KEY")
+    return None
 
 
 def is_mock_mode() -> bool:
@@ -56,10 +67,18 @@ def _extract_json(text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Anthropic backend
+# Anthropic backend  -- DEPRECATED: use OpenRouter instead
 # ---------------------------------------------------------------------------
 
 def _call_anthropic(prompt: str, model: str, max_tokens: int) -> dict:
+    import warnings
+    warnings.warn(
+        "The Anthropic provider is deprecated and will be removed in a future version. "
+        "Use RFP_LLM_PROVIDER=openrouter with a Claude model ID (e.g. "
+        "'anthropic/claude-3.5-sonnet') via OpenRouter instead.",
+        DeprecationWarning,
+        stacklevel=3,
+    )
     from anthropic import Anthropic
 
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
@@ -101,12 +120,44 @@ def _call_cohere(prompt: str, model: str, max_tokens: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# OpenRouter backend  (OpenAI-compatible REST API — no extra SDK required)
+# ---------------------------------------------------------------------------
+
+def _call_openrouter(prompt: str, model: str, max_tokens: int) -> dict:
+    import urllib.request
+
+    payload = json.dumps({
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": max_tokens,
+        "temperature": 0.1,
+    }).encode()
+
+    req = urllib.request.Request(
+        "https://openrouter.ai/api/v1/chat/completions",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {os.environ.get('OPENROUTER_API_KEY')}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://github.com/rfp-evaluation",   # optional but recommended by OpenRouter
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req) as resp:
+        body = json.loads(resp.read())
+
+    raw_text = body["choices"][0]["message"]["content"].strip()
+    json_str = _extract_json(raw_text)
+    return json.loads(json_str)
+
+
+# ---------------------------------------------------------------------------
 # Public entry point
 # ---------------------------------------------------------------------------
 
 def call_llm_for_scoring(
     prompt: str,
-    model: str = "claude-3-5-sonnet-20241022",
+    model: str = "command-r7b-12-2024",
     max_tokens: int = 2000,
 ) -> dict:
     """
@@ -114,8 +165,10 @@ def call_llm_for_scoring(
     parsed JSON dict.
 
     Provider routing:
-        RFP_LLM_PROVIDER=anthropic  →  Anthropic Claude  (default model: claude-3-5-sonnet-20241022)
-        RFP_LLM_PROVIDER=cohere     →  Cohere Command    (default model: command-r7b-12-2024)
+        RFP_LLM_PROVIDER=cohere      →  Cohere Command   (default model: command-r7b-12-2024)
+        RFP_LLM_PROVIDER=openrouter  →  OpenRouter       (default model: google/gemini-2.0-flash-001)
+        RFP_LLM_PROVIDER=anthropic   →  DEPRECATED. Still functional but emits
+                                         DeprecationWarning. Migrate to openrouter.
 
     Falls back to a deterministic mock response if no API key is configured
     for the active provider, so the full pipeline can be run and tested offline.
@@ -127,6 +180,8 @@ def call_llm_for_scoring(
     try:
         if provider == "cohere":
             return _call_cohere(prompt, model, max_tokens)
+        elif provider == "openrouter":
+            return _call_openrouter(prompt, model, max_tokens)
         else:
             return _call_anthropic(prompt, model, max_tokens)
     except json.JSONDecodeError as exc:
