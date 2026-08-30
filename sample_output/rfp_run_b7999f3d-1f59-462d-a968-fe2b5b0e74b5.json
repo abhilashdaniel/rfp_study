@@ -1,0 +1,315 @@
+{
+  "rfp_run_id": "b7999f3d-1f59-462d-a968-fe2b5b0e74b5",
+  "suppliers": [
+    {
+      "supplier_name": "Apex Systems",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "Apex's proposed solution is well-defined and leverages a proven architecture. However, the proposal lacks specific details on the technical fit with the client's existing systems beyond the integration with SAP and payment gateway.",
+          "evidence": "Proposed solution is cloud-native, microservices-based, with a Kubernetes-orchestrated architecture and event-driven backbone (Kafka). Architecture has been proven across three prior deployments of comparable scale.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "The implementation plan is detailed and includes clear milestones and a risk plan. The timeline is realistic, and the team structure is appropriate for the scope of the project.",
+          "evidence": "Estimated delivery: 20 weeks. Team: 1 solutions architect, 3 senior engineers, 1 QA lead, 1 project manager (all dedicated full-time). Milestone 1 (Week 4): architecture sign-off and ERP integration spec. Milestone 2 (Week 10): core order + inventory services in staging. Milestone 3 (Week 16): payment integration and UAT. Milestone 4 (Week 20): production cutover.",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "Pricing is clear and based on a fixed price for implementation. However, the total cost for the first year is not fully transparent, as it excludes third-party licensing for the client's existing ERP.",
+          "evidence": "Implementation (fixed price): $420,000. Annual support & maintenance: $96,000/yr. Total Year 1: $516,000 (Implementation + first year support)",
+          "benchmark": 8.0,
+          "gap": -1.0,
+          "relative_pct": 87.5
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "Apex has strong security and compliance controls, including SOC 2 Type II and ISO 27001 certifications, data encryption, role-based access control, and audit logging. Quarterly third-party penetration testing is included in the support contract.",
+          "evidence": "Apex maintains SOC 2 Type II and ISO 27001 certifications, renewed annually (certificates available on request). All data is encrypted at rest (AES-256) and in transit (TLS 1.3). Role-based access control and full audit logging are built into the platform core.",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "Apex has a well-defined support model and relevant experience. The support team is staffed by the original delivery engineers for the first 6 months post-launch, and references are available upon request.",
+          "evidence": "24/7 support with a 1-hour critical-incident response SLA. Apex has delivered two prior order-management platforms for retail distributors of similar size (references available on request, NDA required). Support is staffed by the original delivery engineers for the first 6 months post-launch.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        }
+      ],
+      "risks": [
+        "Lack of specific technical fit details with the client's existing systems beyond the integration with SAP and payment gateway.",
+        "Exclusions of third-party licensing costs in the total cost for the first year."
+      ],
+      "overall_summary": "Apex Systems' proposal demonstrates a strong understanding of the project requirements and proposes a well-architected solution. The implementation plan is detailed, and the security and compliance controls are robust. However, there are some risks related to the technical fit and the transparency of the total cost for the first year.",
+      "warnings": [],
+      "submission_date": "2026-08-30",
+      "experience_rating": 5.0,
+      "absolute_score": 82.0,
+      "ppi": 97.5,
+      "final_rank": 1,
+      "tie_break_reason": "Highest PPI."
+    },
+    {
+      "supplier_name": "Orbit Digital",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal outlines a flexible and collaborative approach to technical design, which is a strong indicator of technical capability. However, the specific technical details and architecture are not fully detailed, which could impact the score.",
+          "evidence": "We prefer to keep initial technical design flexible so it can evolve based on discovery findings rather than being locked in during the proposal stage.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "The implementation plan is outlined with a clear timeline and team structure, but the lack of specific milestones and a more detailed risk plan could impact the score.",
+          "evidence": "Timeline, Team Structure & Milestones\nEstimated delivery: 16 weeks (subject to refinement after discovery). Team: 1 account director, 2 engineers (allocation may flex based on concurrent projects). Milestones will be defined jointly with the client after discovery is complete.",
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The pricing is clear and transparent, with a not-to-exceed estimate. However, the assumptions and total cost for the first year are not fully detailed, which could impact the score.",
+          "evidence": "Pricing is a not-to-exceed estimate; final scope and cost will be confirmed after the discovery phase, which is included in the price below.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "The proposal outlines a strong security and compliance approach, including specific controls and certifications. However, the lack of detailed documentation on these controls could impact the score.",
+          "evidence": "Specific controls for this project (encryption approach, access model, audit logging) will be documented during the design phase. Orbit Digital has extensive experience meeting enterprise security requirements across prior retail engagements. We hold ISO 27001 certification at the company level.",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal outlines a strong support model with a named account manager and a shared support queue with a same-business-day response target. However, the lack of detailed references and specific examples of similar projects could impact the score.",
+          "evidence": "Orbit Digital has delivered over 15 retail and e-commerce platforms over the past decade, including two large-scale order management systems for national retailers. Three client references are available, including a Fortune 500 retail account.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        }
+      ],
+      "risks": [
+        "Lack of detailed technical specifications and architecture",
+        "Limited risk plan and milestones",
+        "Lack of detailed documentation on security and compliance controls",
+        "Limited references and specific examples of similar projects"
+      ],
+      "overall_summary": "The proposal outlines a strong approach to the technical capability, implementation plan, security and compliance, and support model. However, there are some risks and areas for improvement, particularly in the technical specifications, risk plan, and detailed documentation of security and compliance controls.",
+      "warnings": [],
+      "submission_date": "2026-08-30",
+      "experience_rating": 5.0,
+      "absolute_score": 80.0,
+      "ppi": 95.56,
+      "final_rank": 2,
+      "tie_break_reason": "Ranked by PPI."
+    },
+    {
+      "supplier_name": "NexaWorks",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal demonstrates a good understanding of the technical requirements, including a modular architecture and ERP integration using a middleware adapter pattern. However, the proposal lacks specific details on scalability and technical fit beyond the mentioned integrations.",
+          "evidence": "The platform uses a modular service architecture (order, inventory, payment, notification services) deployed on managed cloud infrastructure. ERP integration uses a middleware adapter pattern that has been reused across four prior client engagements, reducing integration risk.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 9.0,
+          "justification": "The implementation plan is well-structured with a clear timeline, milestones, and a dedicated team. The proposal includes a risk plan and contingency measures, ensuring a comprehensive approach to project management.",
+          "evidence": "Estimated delivery: 14 weeks, using our structured 5-phase delivery methodology: Discovery (Weeks 1-2), Design (Weeks 3-4), Build (Weeks 5-10), Test & UAT (Weeks 11-13), Cutover (Week 14). Team: 1 delivery lead, 2 engineers, 1 QA engineer, all dedicated.",
+          "benchmark": 9.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "The pricing is clear and based on a fixed price for implementation, but the total cost for the first year is provided without detailed breakdown. Assumptions are mentioned, but more transparency on potential additional costs would be beneficial.",
+          "evidence": "Pricing assumes the client's ERP exposes a documented API; additional discovery time will be billed at standard rates if custom ERP work is required. Item Cost (USD) Notes Implementation (fixed price) $260,000 14-week delivery, structured 5-phase methodology Annual support & maintenance $54,000/yr 4-hr critical SLA, business hours Total Year 1 $314,000 Implementation + first year support",
+          "benchmark": 8.0,
+          "gap": -1.0,
+          "relative_pct": 87.5
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal highlights security measures, including secure-SDLC practices and data encryption. The SOC 2 Type I certification process is underway, and internal security policy documentation is available, demonstrating a strong commitment to compliance.",
+          "evidence": "NexaWorks follows documented secure-SDLC practices and encrypts data at rest and in transit. We are currently mid-process on SOC 2 Type I certification (expected completion in 4 months) and can provide our internal security policy documentation on request.",
+          "benchmark": 9.0,
+          "gap": -1.0,
+          "relative_pct": 88.89
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The support model is well-defined with a dedicated team and clear escalation procedures. The proposal mentions similar projects and provides references, indicating a strong track record in the retail and distribution sector.",
+          "evidence": "Dedicated support team with a documented escalation path and a 4-hour response SLA for critical issues during business hours, 24-hour SLA otherwise. NexaWorks has delivered four similar order-management or inventory platforms in the retail and distribution sector over the past three years; two client references are available on request.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        }
+      ],
+      "risks": [
+        "Potential additional costs for custom ERP work not covered in the fixed price implementation.",
+        "SOC 2 Type I certification might not be completed within the expected 4-month timeframe."
+      ],
+      "overall_summary": "NexaWorks provides a comprehensive proposal with a well-structured implementation plan, strong technical capabilities, and a clear support model. However, there are minor concerns regarding pricing transparency and the timeline for SOC 2 certification.",
+      "warnings": [],
+      "submission_date": "2026-08-30",
+      "experience_rating": 5.0,
+      "absolute_score": 80.0,
+      "ppi": 95.28,
+      "final_rank": 3,
+      "tie_break_reason": "Ranked by PPI."
+    },
+    {
+      "supplier_name": "BrightPath Tech",
+      "criteria": [
+        {
+          "criterion_id": 1,
+          "name": "Technical Capability",
+          "weight": 30.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal outlines a clear approach to configuring an existing SaaS product, adding custom fields, and integrating with the client's ERP. However, it lacks specific details on the architecture and scalability of the solution.",
+          "evidence": "We will configure our existing multi-tenant order management SaaS product for the client, adding custom fields and a basic integration connector to the client's ERP. Most functionality is delivered out-of-the-box with light customization rather than new development, which keeps costs and timeline low.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 2,
+          "name": "Implementation Plan",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "The proposal provides a detailed timeline with clear milestones, but it lacks a comprehensive risk plan.",
+          "evidence": "Estimated delivery: 8 weeks. Team: 1 implementation consultant (part-time) and 1 developer. Milestone 1 (Week 2): environment provisioned. Milestone 2 (Week 5): configuration complete. Milestone 3 (Week 8): go-live.",
+          "benchmark": 9.0,
+          "gap": -2.0,
+          "relative_pct": 77.78
+        },
+        {
+          "criterion_id": 3,
+          "name": "Commercial Value",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 8.0,
+          "justification": "The proposal offers clear pricing with a fixed implementation cost and annual support and maintenance fees. However, it lacks detailed assumptions.",
+          "evidence": "Pricing assumes the client uses our standard SaaS connectors without deep customization. Custom integration work beyond the standard connector is billed separately at $150/hour.",
+          "benchmark": 8.0,
+          "gap": 0.0,
+          "relative_pct": 100.0
+        },
+        {
+          "criterion_id": 4,
+          "name": "Security & Compliance",
+          "weight": 20.0,
+          "max_score": 10,
+          "score": 6.0,
+          "justification": "The proposal mentions data encryption and industry best practices but lacks specific details on security controls, certifications, and auditability.",
+          "evidence": "Data is encrypted in transit. We follow general industry best practices for security. We are in the process of pursuing formal compliance certification but do not currently hold SOC 2 or ISO 27001 certification.",
+          "benchmark": 9.0,
+          "gap": -3.0,
+          "relative_pct": 66.67
+        },
+        {
+          "criterion_id": 5,
+          "name": "Support & Experience",
+          "weight": 10.0,
+          "max_score": 10,
+          "score": 7.0,
+          "justification": "The proposal outlines a support model with a response time and mentions relevant experience. However, it lacks specific references to similar projects.",
+          "evidence": "Support is provided via email ticketing with a target 24-48 hour response time during business hours. This will be our first deployment specifically for a retail distributor of this size; most of our current customers are smaller retail businesses.",
+          "benchmark": 8.0,
+          "gap": -1.0,
+          "relative_pct": 87.5
+        }
+      ],
+      "risks": [
+        "Lack of specific details on security controls and certifications.",
+        "No comprehensive risk plan mentioned."
+      ],
+      "overall_summary": "BrightPath Tech's proposal offers a competitive solution with a clear implementation plan and pricing. However, it lacks detailed information on security, compliance, and specific references to similar projects.",
+      "warnings": [],
+      "submission_date": "2026-08-28",
+      "experience_rating": 5.0,
+      "absolute_score": 73.0,
+      "ppi": 87.64,
+      "final_rank": 4,
+      "tie_break_reason": "Ranked by PPI."
+    }
+  ]
+}
