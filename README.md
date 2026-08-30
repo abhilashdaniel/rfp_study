@@ -1,5 +1,7 @@
 # AbhilashDaniel | Agentic RFP Evaluation & Supplier Ranking
 
+🚀 **Live app:** [abhilashdaniel-rfpstudy.streamlit.app](https://abhilashdaniel-rfpstudy.streamlit.app/)
+
 An AI-assisted Streamlit application that reads supplier RFP proposals (PDFs), scores
 them against configurable weighted criteria using an LLM, benchmarks suppliers against
 their peers with **deterministic Python**, and produces an explainable, reproducible
