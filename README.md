@@ -1,4 +1,4 @@
-# Agentic RFP Evaluation & Supplier Ranking
+# AbhilashDaniel | Agentic RFP Evaluation & Supplier Ranking
 
 An AI-assisted Streamlit application that reads supplier RFP proposals (PDFs), scores
 them against configurable weighted criteria using an LLM, benchmarks suppliers against
@@ -19,7 +19,7 @@ leaderboard.
 |---|---|---|
 | **Orchestrator Agent** | Controls the workflow and calls each tool in order | `orchestrator.py` |
 | **Document Tool** | Extracts clean text from each uploaded PDF | `tools/document_tool.py` (PyMuPDF) |
-| **Evaluation Agent** | Builds an evidence-grounded prompt and gets one JSON scorecard per supplier | `tools/evaluation_agent.py` + `utils/llm_client.py` |
+| **Evaluation Agent** | Builds an evidence-grounded prompt and gets one JSON scorecard per supplier | `tools/evaluation_agent.py` + `utils/llm_client.py` (Cohere / OpenRouter) |
 | **Validation Tool** | Schema-checks the LLM output, fills missing criteria, clips out-of-range scores, logs warnings | `tools/validation_tool.py` |
 | **Ranking Tool** | Absolute weighted score, peer benchmarks, gaps, relative %, PPI, deterministic tie-break ranking | `tools/ranking_tool.py` |
 | **Repository / DB** | SQLite persistence for criteria, runs, and results | `db/repository.py`, `db/init_db.py`, `db/schema.sql` |
@@ -104,18 +104,25 @@ re-query the DB).
 
 ## 4. LLM layer
 
-`utils/llm_client.py` calls the Anthropic Messages API (`claude-sonnet-4-6` by default,
-configurable in the sidebar) and asks for **JSON-only** output: one score + justification
-+ evidence per active criterion, plus a short risk list and overall summary. The prompt
-explicitly instructs the model to use only evidence found in the proposal text.
+`utils/llm_client.py` routes scoring calls to one of two active providers, selected via
+the `RFP_LLM_PROVIDER` environment variable (default: `cohere`):
 
-**Offline / mock mode:** if no `ANTHROPIC_API_KEY` is provided (env var or the sidebar
-field), the app automatically runs in a deterministic **mock mode** — it derives stable,
-repeatable placeholder scores from a hash of each supplier + criterion so you can exercise
-the full validation/scoring/ranking/persistence pipeline and demo the UI without an API
-key or network access. This is clearly flagged in the sidebar and in every mock
-justification string (prefixed `[MOCK]`). Switch to live scoring at any time by supplying
-a real key.
+| Provider | Env var | Default model | Notes |
+|---|---|---|---|
+| **Cohere** *(default)* | `COHERE_API_KEY` | `command-r7b-12-2024` | Native SDK (`cohere>=5.0.0`) |
+| **OpenRouter** | `OPENROUTER_API_KEY` | `google/gemini-2.0-flash-001` | OpenAI-compatible REST, no extra SDK |
+| ~~Anthropic~~ | ~~`ANTHROPIC_API_KEY`~~ | ~~deprecated~~ | Emits `DeprecationWarning`; use OpenRouter instead |
+
+The LLM is asked for **JSON-only** output: one score + justification + evidence per active
+criterion, plus a short risk list and overall summary. The prompt explicitly instructs the
+model to use only evidence found in the proposal text.
+
+**Offline / mock mode:** if no API key is set for the active provider, the app
+automatically runs in a deterministic **mock mode** — it derives stable, repeatable
+placeholder scores from a hash of each supplier + criterion so you can exercise the full
+validation/scoring/ranking/persistence pipeline and demo the UI without an API key or
+network access. This is clearly flagged in the sidebar and in every mock justification
+string (prefixed `[MOCK]`). Switch to live scoring at any time by supplying a real key.
 
 ---
 
@@ -136,12 +143,18 @@ python db/init_db.py
 streamlit run app.py
 ```
 
-In the sidebar, either paste an Anthropic API key to enable live LLM scoring, or leave it
-blank to use offline mock mode. You can also set the key via environment variable instead
-of the UI:
+In the sidebar, select **Cohere** or **OpenRouter** as the provider and paste the
+corresponding API key to enable live LLM scoring. Leave it blank to use offline mock mode.
+You can also set the key via environment variable:
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+# Cohere (default provider)
+export COHERE_API_KEY=...
+streamlit run app.py
+
+# OpenRouter
+export RFP_LLM_PROVIDER=openrouter
+export OPENROUTER_API_KEY=...
 streamlit run app.py
 ```
 
@@ -149,12 +162,16 @@ streamlit run app.py
 
 1. Push this project to a public (or connected) GitHub repo.
 2. On Streamlit Community Cloud, create a new app pointing at `app.py`.
-3. Add `ANTHROPIC_API_KEY` under the app's **Secrets** (`.streamlit/secrets.toml` style)
-   if you want live scoring; otherwise the deployed app will run in mock mode.
+3. Add the relevant API key under the app's **Secrets** (`.streamlit/secrets.toml` style):
+   ```toml
+   COHERE_API_KEY = "..."
+   # or for OpenRouter:
+   # OPENROUTER_API_KEY = "..."
+   # RFP_LLM_PROVIDER = "openrouter"
+   ```
 4. Note: Streamlit Cloud's filesystem is ephemeral — the SQLite file will reset on
-   redeploys/restarts. For a classroom submission this is fine (re-run
-   `db/init_db.py` logic runs automatically on first import), but it is not meant for
-   durable production storage.
+   redeploys/restarts. For a classroom submission this is fine (`db/init_db.py` logic
+   runs automatically on first import), but it is not meant for durable production storage.
 
 ---
 
@@ -178,7 +195,7 @@ rfp_project/
 │   ├── validation_tool.py         # Schema checks, clipping, warnings
 │   └── ranking_tool.py            # Scoring, benchmarking, PPI, tie-breaks
 ├── utils/
-│   └── llm_client.py              # Anthropic API wrapper + mock mode
+│   └── llm_client.py              # Multi-provider LLM client (Cohere / OpenRouter) + mock mode
 ├── data/
 │   └── sample_rfps/               # 4 synthetic supplier PDFs
 └── sample_output/
