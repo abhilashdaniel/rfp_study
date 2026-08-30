@@ -2,7 +2,7 @@
 Document Tool
 Extracts clean text from an uploaded supplier RFP PDF using PyMuPDF.
 """
-import fitz  # PyMuPDF
+import pymupdf
 
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
@@ -11,7 +11,7 @@ def extract_text_from_pdf(file_bytes: bytes) -> str:
     Returns a single string with page breaks marked, suitable for prompting.
     """
     text_parts = []
-    with fitz.open(stream=file_bytes, filetype="pdf") as doc:
+    with pymupdf.open(stream=file_bytes, filetype="pdf") as doc:
         for page_num, page in enumerate(doc, start=1):
             page_text = page.get_text("text").strip()
             if page_text:
