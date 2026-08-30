@@ -23,15 +23,16 @@ st.set_page_config(page_title="Agentic RFP Evaluation", layout="wide")
 # ---------------------------------------------------------------------------
 # Sidebar: LLM configuration
 # ---------------------------------------------------------------------------
-_ANTHROPIC_MODELS = [
-    "claude-3-5-sonnet-20241022",
-    "claude-3-5-haiku-20241022",
-    "claude-3-opus-20240229",
-]
 _COHERE_MODELS = [
     "command-r7b-12-2024",
     "command-r-plus-08-2024",
     "command-r-08-2024",
+]
+_OPENROUTER_MODELS = [
+    "google/gemini-2.0-flash-001",
+    "meta-llama/llama-3.3-70b-instruct",
+    "mistralai/mistral-small-3.1-24b-instruct",
+    "qwen/qwen3-14b",
 ]
 
 with st.sidebar:
@@ -39,21 +40,21 @@ with st.sidebar:
 
     provider = st.radio(
         "LLM Provider",
-        ["Anthropic", "Cohere"],
+        ["Cohere", "OpenRouter"],   # Cohere is default (first item)
         horizontal=True,
         help="Select which LLM provider to use for scoring.",
     )
     os.environ["RFP_LLM_PROVIDER"] = provider.lower()
 
-    if provider == "Anthropic":
+    if provider == "OpenRouter":
         api_key_input = st.text_input(
-            "Anthropic API key",
+            "OpenRouter API key",
             type="password",
-            help="Leave blank to run in offline MOCK mode.",
+            help="Get a free key at openrouter.ai. Leave blank for MOCK mode.",
         )
         if api_key_input:
-            os.environ["ANTHROPIC_API_KEY"] = api_key_input
-        model_choice = st.selectbox("Model", _ANTHROPIC_MODELS, index=0)
+            os.environ["OPENROUTER_API_KEY"] = api_key_input
+        model_choice = st.selectbox("Model", _OPENROUTER_MODELS, index=0)
     else:
         api_key_input = st.text_input(
             "Cohere API key",
